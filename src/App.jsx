@@ -5,6 +5,7 @@ import MovieCard from './components/MovieCard';
 import {useDebounce} from 'react-use';
 import { updateSearchCount } from './appwrite';
 // const BASE_URL = 'https://api.themoviedb.org/3';
+// new 
 const BASE_URL = 'https://vite-react-template.jprayasb2003.workers.dev/api';
 
 // const BASE_URL = 'https://www.omdbapi.com';

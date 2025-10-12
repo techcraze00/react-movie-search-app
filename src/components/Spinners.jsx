@@ -3,10 +3,10 @@ import React from 'react'
 const Spinners = () => {
   return (
  
-    <div className="flex flex-row gap-2">
-        <div className="w-3 h-3 rounded-full bg-indigo-300 animate-bounce [animation-delay:.7s]"></div>
-        <div className="w-3 h-3 rounded-full bg-indigo-500 animate-bounce [animation-delay:.3s]"></div>
-        <div className="w-3 h-3 rounded-full bg-indigo-700 animate-bounce [animation-delay:.7s]"></div>
+    <div class="flex flex-row gap-2">
+        <div class="w-3 h-3 rounded-full bg-indigo-300 animate-bounce [animation-delay:.7s]"></div>
+        <div class="w-3 h-3 rounded-full bg-indigo-500 animate-bounce [animation-delay:.3s]"></div>
+        <div class="w-3 h-3 rounded-full bg-indigo-700 animate-bounce [animation-delay:.7s]"></div>
     </div>
     // <div className="flex flex-col items-center justify-center p-4">
     //   <div className="w-48 h-48 relative">

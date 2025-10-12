@@ -3,6 +3,7 @@ import Search from './components/Search'
 import Spinners from './components/Spinners';
 import MovieCard from './components/MovieCard';
 import {useDebounce} from 'react-use';
+import { updateSearchCount } from './appwrite';
 // const BASE_URL = 'https://api.themoviedb.org/3';
 const BASE_URL = 'https://vite-react-template.jprayasb2003.workers.dev/api';
 
@@ -22,6 +23,7 @@ const App = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setisLoading] = useState(false);
+  const [deBounceSearchTerm, setDeBounceSearchTerm] = useState('');
   /*
   const fetchMovies = async() => {
     try{
@@ -41,6 +43,7 @@ const App = () => {
     }
   }
 */
+  useDebounce( () => setDeBounceSearchTerm(searchTerm), 500, [searchTerm] )
 
   const fetchMovies = async (query='') => {
     setisLoading(true);
@@ -68,6 +71,8 @@ const App = () => {
       }
 
       setMovieList(data.results || [])
+
+      updateSearchCount();
    } catch (error) {
       console.error(`Error fetching the movies: ${error}`);
       setErrorMsg('Error fetching movies. Please try again later.');
@@ -77,8 +82,8 @@ const App = () => {
   };
 
   useEffect( () => {
-    fetchMovies(searchTerm);
-  }, [searchTerm]);
+    fetchMovies(deBounceSearchTerm);
+  }, [deBounceSearchTerm]);
 
   return (
     <main>

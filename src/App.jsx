@@ -4,8 +4,10 @@ import Spinners from './components/Spinners';
 import MovieCard from './components/MovieCard';
 import {useDebounce} from 'react-use';
 import { updateSearchCount } from './appwrite';
-// const BASE_URL = 'https://api.themoviedb.org/3';
+import { getTrendingMovies } from './appwrite';
+
 const BASE_URL = 'https://vite-react-template.jprayasb2003.workers.dev/api';
+// const BASE_URL = 'https://api.themoviedb.org/3';
 
 // const BASE_URL = 'https://www.omdbapi.com';
 /*
@@ -23,6 +25,7 @@ const App = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setisLoading] = useState(false);
+  const [trendingMovies, setTrendingMovies] = useState([]);
   const [deBounceSearchTerm, setDeBounceSearchTerm] = useState('');
   /*
   const fetchMovies = async() => {
@@ -44,6 +47,17 @@ const App = () => {
   }
 */
   useDebounce( () => setDeBounceSearchTerm(searchTerm), 500, [searchTerm] )
+
+  const loadTrendingMovies = async () => {
+    try {
+      const movies = await getTrendingMovies();
+      setTrendingMovies(movies);
+    } catch (error) {
+      console.error(`Error Fetching Trending Movies: ${error}`);
+
+    }
+  }
+
 
   const fetchMovies = async (query='') => {
     setisLoading(true);
@@ -72,7 +86,9 @@ const App = () => {
 
       setMovieList(data.results || [])
 
-      updateSearchCount();
+      if(query && data.results.length >0){
+        await updateSearchCount(query, data.results[0]);
+      }
    } catch (error) {
       console.error(`Error fetching the movies: ${error}`);
       setErrorMsg('Error fetching movies. Please try again later.');
@@ -85,6 +101,10 @@ const App = () => {
     fetchMovies(deBounceSearchTerm);
   }, [deBounceSearchTerm]);
 
+  useEffect( () => {
+    loadTrendingMovies();
+  }, []);
+
   return (
     <main>
       <div className='pattern'/>
@@ -94,9 +114,23 @@ const App = () => {
           <h1>Find <span className='text-gradient'> Movies </span> You'll Enjoy Without the Hassle</h1>
           <Search searchTerm={ searchTerm } setSearchTerm={setSearchTerm} />
         </header>
+        
+        { trendingMovies.length >0 && (
+          <section className='trending'>
+            <h2>Trending Movies</h2>
+            <ul>
+              {trendingMovies.map( (movies, index) => (
+                <li key={movies.$id}>
+                  <p> {index+1} </p>
+                  <img className='' src={movies.poster_url} alt={movies.searchTerm} title={movies.searchTerm} />
+                </li>
+              ) )}
+            </ul>
+          </section>
+        )}
 
         <section className='all-movies'>
-          <h2 className='mt-[40px]'>All Movies</h2>
+          <h2>All Movies</h2>
           {
             isLoading ? (<Spinners/>)
             : errorMsg ? ( <p className='text-red-500'>{ errorMsg }</p> ) :

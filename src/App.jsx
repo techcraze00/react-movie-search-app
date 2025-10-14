@@ -46,7 +46,7 @@ const App = () => {
     }
   }
 */
-  useDebounce( () => setDeBounceSearchTerm(searchTerm), 500, [searchTerm] )
+  useDebounce( () => setDeBounceSearchTerm(searchTerm), 700, [searchTerm] )
 
   const loadTrendingMovies = async () => {
     try {

@@ -111,6 +111,13 @@
   }
 }
 
+@layer utilities {
+  /* Darker gradient for the highlighted word in light mode */
+  :root[data-theme="light"] .text-gradient {
+    background-image: linear-gradient(to right, #9c89f9, #3E1FFF);
+  }
+}
+
 @layer components {
   .pattern {
     @apply bg-hero-pattern w-full h-screen bg-center bg-cover absolute z-0;

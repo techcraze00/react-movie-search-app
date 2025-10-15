@@ -11,7 +11,7 @@ This is a **React Movie Search App** built using React and Vite. The app allows 
 
 ## Live Demo
 
-Check out the live version of the app here: [Live Page](react-movie-search-app-62tz.vercel.app)  
+Check out the live version of the app here: [Live Page](https://react-movie-search-app-62tz.vercel.app)  
 
 
 ---

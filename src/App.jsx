@@ -74,9 +74,6 @@ const App = () => {
       }
 
       const data = await response.json();
-      console.log(data)
-      console.log(data.results)
-      
       
       if(data.Response === 'False'){ 
         setErrorMsg(data.Error || "Failed to fetch movie");
@@ -115,7 +112,7 @@ const App = () => {
           <Search searchTerm={ searchTerm } setSearchTerm={setSearchTerm} />
         </header>
         
-        { trendingMovies.length >0 && (
+        {searchTerm.length === 0 && trendingMovies.length >0 && (
           <section className='trending'>
             <h2>Trending Movies</h2>
             <ul>
@@ -133,8 +130,9 @@ const App = () => {
           <h2>All Movies</h2>
           {
             isLoading ? (<Spinners/>)
-            : errorMsg ? ( <p className='text-red-500'>{ errorMsg }</p> ) :
-            (
+            : errorMsg ? ( <p className='text-red-500'>{ errorMsg }</p> ) 
+            : movieList.length === 0 ? ( <h3>No movies found for name "<strong>{searchTerm}</strong>" </h3> ) 
+            : (
               <ul >
                  {movieList.map( (movies) => ( 
                   <MovieCard key={movies.id} movies={movies} />

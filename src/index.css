@@ -35,8 +35,12 @@
     @apply text-2xl font-bold text-white sm:text-3xl;
   }
 
+  h3 {
+    @apply text-xl font-extralight text-white sm:text-2xl;
+  }
+
   main {
-    @apply min-h-screen relative bg-primary;
+    @apply min-h-screen relative bg-primary scroll-smooth;
   }
 
   header {

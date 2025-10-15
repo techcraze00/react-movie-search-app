@@ -1,12 +1,10 @@
 # React Movie Search App
 
-This is a **React Movie Search App** built using React and Vite. The app allows users to search for movies, view trending movies, and toggle between light and dark themes for a better user experience.
-
+This is a **React Movie Search App** built using React and Vite. The app allows users to search for movies and view trending movies.
 ## Features
 
-- **Movie Search**: Search for movies using keywords.
-- **Trending Movies**: View a list of trending movies.
-- **Light/Dark Mode**: Toggle between light and dark themes.
+- **Movie Search**: Search for movies using keywords. (uses `TMDB API` to search for over million movies)
+- **Trending Movies**: View a list of trending movies. (trendings are recorded in `Appwrite` database based on user search frequency)
 - **Responsive Design**: Fully responsive for mobile and desktop devices.
 
 ## Live Demo
@@ -31,7 +29,7 @@ Make sure you have the following installed on your machine:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/react-movie-search-app.git
+   git clone https://github.com/techcraze00/react-movie-search-app.git
    cd react-movie-search-app
 
 2. **Install Dependencies**:
@@ -89,9 +87,12 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Appwrite](https://appwrite.io/)
+- [TMDB](https://www.themoviedb.org/)
+- [Vercel](https://vercel.app)
 
 ---
 
 ## Author
-- **Prayas Jadhav** - [Your GitHub Profile](https://github.com/techcraze00)
+- **Prayas Jadhav** - [Github Profile](https://github.com/techcraze00)
 

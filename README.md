@@ -76,7 +76,7 @@ Make sure you have the following installed on your machine:
 ---
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/techcraze00/react-movie-search-app/blob/gh-page/LICENSE.md) file for details.
 
 ---
 

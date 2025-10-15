@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Search from './components/Search'
 import Spinners from './components/Spinners';
 import MovieCard from './components/MovieCard';
+import SwitchTheme from './components/SwitchTheme';
 import {useDebounce} from 'react-use';
 import { updateSearchCount } from './appwrite';
 import { getTrendingMovies } from './appwrite';
@@ -104,6 +105,7 @@ const App = () => {
 
   return (
     <main>
+      <SwitchTheme />
       <div className='pattern'/>
       <div className='wrapper'>
         <header>
@@ -127,7 +129,7 @@ const App = () => {
         )}
 
         <section className='all-movies'>
-          <h2>All Movies</h2>
+          <h2 className='mt-10'>All Movies</h2>
           {
             isLoading ? (<Spinners/>)
             : errorMsg ? ( <p className='text-red-500'>{ errorMsg }</p> ) 

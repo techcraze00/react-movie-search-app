@@ -52,9 +52,70 @@
   }
 }
 
+/* Light theme overrides */
+:root[data-theme="light"] {
+  /* palette tuned to light tones of current dark theme */
+  --color-primary: #f5f3ff; /* very light violet gray */
+  --color-light-100: #4b4b7a; /* muted dark for text accents */
+  --color-light-200: #6b76a3;
+  --color-gray-100: #4b5563; /* slate-600 */
+  --color-dark-100: #ffffff; /* cards become white */
+  --background-image-hero-pattern: url("/light-hero-bg.png");
+}
+
+@layer base {
+  :root[data-theme="light"] body {
+    background: var(--color-primary);
+  }
+
+  :root[data-theme="light"] h1 {
+    @apply text-black;
+  }
+
+  :root[data-theme="light"] h2 {
+    @apply text-black;
+  }
+
+  :root[data-theme="light"] h3 {
+    @apply text-black;
+  }
+
+  :root[data-theme="light"] main {
+    @apply bg-white;
+    background-color: var(--color-primary);
+  }
+}
+
+@layer components {
+  :root[data-theme="light"] .search {
+    @apply bg-black/5;
+  }
+
+  :root[data-theme="light"] .search input {
+    @apply text-gray-700 placeholder-gray-500;
+  }
+
+  :root[data-theme="light"] .movie-card {
+    @apply bg-white shadow-light-100/20;
+  }
+
+  :root[data-theme="light"] .movie-card h3 {
+    @apply text-black;
+  }
+
+  :root[data-theme="light"] .movie-card .rating p,
+  :root[data-theme="light"] .movie-card .content .lang,
+  :root[data-theme="light"] .movie-card .content .year,
+  :root[data-theme="light"] .movie-card .content span {
+    @apply text-gray-700;
+  }
+}
+
 @layer components {
   .pattern {
     @apply bg-hero-pattern w-full h-screen bg-center bg-cover absolute z-0;
+    /* Add downward-only shadow to blend image with page background in dark mode */
+    box-shadow: 0 24px 24px 0 #030014;
   }
 
   .wrapper {
@@ -62,10 +123,10 @@
   }
 
   .trending {
-    @apply mt-20;
+    @apply mt-8;
 
     & ul {
-      @apply flex flex-row overflow-y-auto gap-3 -mt-2 w-full hide-scrollbar;
+      @apply flex flex-row overflow-y-auto gap-3 -mt-4 w-full hide-scrollbar;
     }
 
     & ul li {
@@ -82,7 +143,7 @@
   }
 
   .search {
-    @apply w-full bg-light-100/5 px-4 py-3 rounded-lg mt-10 max-w-3xl mx-auto;
+    @apply w-full bg-light-100/5 px-4 py-3 rounded-4xl mt-10 max-w-3xl mx-auto;
 
     & div {
       @apply relative flex items-center;
@@ -143,6 +204,13 @@
     & .content .year {
       @apply text-gray-100 font-medium text-base;
     }
+  }
+}
+
+@layer components {
+  /* Light theme: adjust pattern shadow color to sky blue */
+  :root[data-theme="light"] .pattern {
+    box-shadow: 0 24px 24px 0 #a0e2fc;
   }
 }
 
